@@ -31,96 +31,60 @@ class BaseTest(unittest.TestCase):
         res = self.client.post("/api/v1/products/", data=json.dumps(self.product), content_type='application/json')
         self.assertEqual(res.status_code, 201)
         res1 = self.client.get('/api/v1/products/')
+        data = json.loads(res1.get_data().decode("UTF-8"))
         self.assertEqual(res1.status_code, 200)
-        #self.assertIn('Shirt', str(res.data))
+        self.assertIn('Shirt', str(res1.data))
 
-#test get each product
+    #test get each product
     def test_get_each_product(self):
         """Test API can get a single product by using it's id."""
         rv = self.client.post('/api/v1/products/', data=json.dumps(self.product), content_type='application/json')
         self.assertEqual(rv.status_code, 201)
-        result_in_json = json.loads(rv.data.decode('utf-8').replace("'", "\""))
-        result = self.client.get(
-            '/api/v1/products/{}'.format(result_in_json['id']))
-        self.assertEqual(result.status_code, 200)
-        #self.assertIn('Shirt', str(result.data))
-
+        rv = self.client.get("/api/v1/products/1")
+        data = json.loads(rv.get_data().decode("UTF-8"))
+        self.assertEqual(rv.status_code, 200)
+        self.assertIn('Shirt', str(rv.data))
+    #test update product details
     def test_update_product(self):
-        pass
         """
         Test API can edit an existing product. (PUT request)
 
         """
         rv = self.client.post(
-            '/api/v1/products/',
-            data={'name': 'Laptop', 'price': 20000})
+            '/api/v1/products/', content_type='application/json', data=json.dumps(self.product))
         self.assertEqual(rv.status_code, 201)
         rv = self.client.put(
-            '/api/v1/products/1',
-            data={
-                "name": "Laptop Hp Pavillion",
-                "price": 50000
-            })
-        self.assertEqual(rv.status_code, 200)
+            '/api/v1/products/1', content_type='application/json', data=json.dumps(self.product))
+        self.assertEqual(rv.status_code, 201)
         results = self.client.get('/api/v1/products/1')
-        self.assertIn('Hp Pavillion', str(results.data))
-        
+        self.assertIn('Shirt', str(results.data))
+    #test
     def test_delete_product(self):
-        pass
         """
         Test API can delete an existing product. (DELETE request).
 
         """
         rv = self.client.post(
-            '/api/v1/products/',
-            data={'name': 'Laptop', 'price':10000})
+            '/api/v1/products/', content_type='application/json', data=json.dumps(self.product))
         self.assertEqual(rv.status_code, 201)
-        res = self.client.delete('/api/v1/products/1', content_type='application/json', data=json.dumps(self.product))
-        self.assertEqual(res.status_code, 200)
+        res = self.client.delete('/api/v1/products/1', content_type='application/json')
+        self.assertEqual(res.status_code, 204)
         # Test to see if it exists, should return a 404
         result = self.client.get('/api/v1/products/1')
         self.assertEqual(result.status_code, 404)
         
 
-# test post product
+    # test post product
     def test_post_product(self):
         res = self.client.post('api/v1/products', content_type='application/json', data=json.dumps(self.product))
         self.assertEqual(res.status_code, 201)
 
-   #test for get all sales
-    def test_get_all_sales(self):
-        res = self.client.post("/api/v1/sales", content_type='application/json', data=json.dumps(self.sale))
-        self.assertEqual(res.status_code, 201)
-        res1 = self.client.get('/api/v1/sales/')
-        self.assertEqual(res1.status_code, 200)
-        #self.assertIn('Record addded', result.data)
-
-
-#test get each sale
-    def test_get_each_sale(self):
-        """Test API can get a single sale by using it's id."""
-        rv = self.client.post('/api/v1/sales/', data=json.dumps(self.sale), content_type='application/json')
-        self.assertEqual(rv.status_code, 201)
-        result_in_json = json.loads(rv.data.decode('utf-8').replace("'", "\""))
-        result = self.client.get(
-            '/api/v1/sales/{}'.format(result_in_json['sale_id']))
-        self.assertEqual(result.status_code, 200)
-        #self.assertIn('Shirt', str(result.data))
-
-
-# test post a single record
-    def test_post_sale(self):
-        res = self.client.post('api/v1/sales/', content_type='application/json', data=json.dumps(self.sale))
-        self.assertEqual(res.status_code, 201)
-
-
-
-    def tearDown(self):
+        def tearDown(self):
         """This function destroys all the variables
         that have been created during the test
         """
-        pass
-        # del self.product
+        del self.product
+        del self.sale
     
 
 if __name__ == '__main__':
