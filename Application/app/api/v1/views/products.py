@@ -19,8 +19,8 @@ class ProductsList(Resource):
         new_product = api.payload
         new_product['product_id'] = len(Products) + 1
         Products.append(new_product)
-        return {'results': "Product added successfully", 'status': "ok"}, 201
 
+        return {'results': "Product added successfully", 'status': "ok"}, 201
 
 
 @api.route('/<int:id>')
@@ -54,4 +54,5 @@ class Product(Resource):
             if product['product_id'] == id:
                 Products.remove(product)
                 return {'results':"Product Deleted"}, 204
+
 
