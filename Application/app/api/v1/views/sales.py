@@ -20,6 +20,7 @@ class SalesList(Resource):
         return Sales, 200
 
 
+
     @api.expect(sale, validate=True)
     def post(self):
         '''Post a sale'''
@@ -27,3 +28,4 @@ class SalesList(Resource):
         new_sale['sale_id'] = len(Sales) + 1
         Sales.append(new_sale)
         return {'results': "Sale added successfully"}, 201
+
