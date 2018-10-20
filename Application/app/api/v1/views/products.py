@@ -12,6 +12,7 @@ class ProductsList(Resource):
         '''List all products'''
         return Products, 200
 
+
     @api.expect(product, validate=True)
     def post(self):
         '''Post a product'''
@@ -48,4 +49,5 @@ class Product(Resource):
                 product.update(update)
                 return product, 201
         api.abort(404)
+
 
