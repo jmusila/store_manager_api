@@ -37,8 +37,6 @@ class Product(Resource):
         api.abort(404)
 
 
-    
-    
     @api.doc('update_single_product')
     @api.expect(product_update)
     def put(self, id):
@@ -50,4 +48,10 @@ class Product(Resource):
                 return product, 201
         api.abort(404)
 
+
+    def delete(self, id):
+        for product in Products:
+            if product['product_id'] == id:
+                Products.remove(product)
+                return {'results':"Product Deleted"}, 204
 
