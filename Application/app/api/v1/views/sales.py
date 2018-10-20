@@ -9,6 +9,7 @@ from flask_restplus import Resource
 
 from app.api.v1.models.sales import Sales, api, sale
 
+
 # class for sale list operations
 @api.route('/')
 class SalesList(Resource):
@@ -40,3 +41,4 @@ class Record(Resource):
             if sale['sale_id'] == id:
                 return sale, 200
         api.abort(404)
+
