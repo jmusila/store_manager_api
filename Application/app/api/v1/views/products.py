@@ -3,6 +3,7 @@ from flask_restplus import Resource
 from app.api.v1.models.products import Products, api, product, product_update
 
 
+
 @api.route('/')
 class ProductsList(Resource):
     @api.doc('list_products')
@@ -20,6 +21,7 @@ class ProductsList(Resource):
         return {'results': "Product added successfully", 'status': "ok"}, 201
 
 
+
 @api.route('/<int:id>')
 #@api.param('id', 'The product identifier')
 @api.response(404, 'Product not found')
@@ -33,6 +35,9 @@ class Product(Resource):
                 return product, 200
         api.abort(404)
 
+
+    
+    
     @api.doc('update_single_product')
     @api.expect(product_update)
     def put(self, id):
@@ -43,3 +48,4 @@ class Product(Resource):
                 product.update(update)
                 return product, 201
         api.abort(404)
+
