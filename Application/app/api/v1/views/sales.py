@@ -20,7 +20,6 @@ class SalesList(Resource):
         return Sales, 200
 
 
-
     @api.expect(sale, validate=True)
     def post(self):
         '''Post a sale'''
@@ -28,4 +27,18 @@ class SalesList(Resource):
         new_sale['sale_id'] = len(Sales) + 1
         Sales.append(new_sale)
         return {'results': "Sale added successfully"}, 201
+
+
+@api.route('/<int:id>')
+@api.param('id', 'The sale identifier')
+@api.response(404, 'Sale not found')
+class Record(Resource):
+    @api.doc('get_single_sale')
+    @api.marshal_with(sale)
+    def get(self, id):
+        '''Fetch a sale given its identifier'''
+        for sale in Sales:
+            if sale['sale_id'] == id:
+                return sale, 200
+        api.abort(404)
 
