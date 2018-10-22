@@ -7,7 +7,7 @@ Authored by: Jonathan Musila
 import unittest
 import json
 
-#local imports
+#local import
 from app import create_app
 
 class BaseTest(unittest.TestCase):
@@ -117,7 +117,7 @@ class BaseTest(unittest.TestCase):
         data = json.loads(rv.get_data().decode("UTF-8"))
         self.assertEqual(rv.status_code, 200)
         self.assertIn('Jonathan', str(rv.data))
-        
+
 
 
     # test post a single record

@@ -12,7 +12,6 @@ product = api.model('Product', {
 })
 
 
-
 Products = []
 
 product_update = api.model('Product updates',{

@@ -1,5 +1,5 @@
 """
-This module is users views
+This module is users view
 
 Authored by: Jonathan Musila
 """

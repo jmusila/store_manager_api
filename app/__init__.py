@@ -4,7 +4,6 @@ from instance.config import app_config
 from flask_jwt_extended import JWTManager
 
 
-
 def create_app(config_name): 
     app = Flask(__name__)
     app.url_map.strict_slashes=False

@@ -44,7 +44,6 @@ class Product(Resource):
                 product.update(update)
                 return product, 201
         api.abort(404)
-        
     @jwt_required
     def delete(self, id):
         for product in Products:

@@ -12,7 +12,6 @@ user = api.model('User', {
 })
 
 
-
 Users = [        {
             "email": "tom@me.com",
             "lastname": "musila",

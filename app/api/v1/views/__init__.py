@@ -8,7 +8,6 @@ from .user import api as user_api
 
 
 
-
 api = Api(
     title ='Store-Manager',
     version='1.0',

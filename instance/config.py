@@ -29,7 +29,6 @@ class ProductionConfig(Config):
     TESTING = False
 
 
-
 app_config = {
     'development': DevelopmentConfig,
     'testing': TestingConfig,
