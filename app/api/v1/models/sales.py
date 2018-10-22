@@ -11,4 +11,5 @@ sale = api.model('Sales', {
     'items': fields.Integer(required=True, description='The total number of items sold'),
 })
 
+
 Sales = []

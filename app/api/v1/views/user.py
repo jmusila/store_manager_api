@@ -14,7 +14,7 @@ from app.api.v1.models.user import Users, api, user, user_login, api, UserModel
 @api.route('/register')
 class UserRegister(Resource):
 
-    @api.expect(user, validate=True) 
+    @api.expect(user, validate=True)
     def post(self):
         '''Post a sale'''
         

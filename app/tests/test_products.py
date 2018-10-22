@@ -117,6 +117,7 @@ class BaseTest(unittest.TestCase):
         data = json.loads(rv.get_data().decode("UTF-8"))
         self.assertEqual(rv.status_code, 200)
         self.assertIn('Jonathan', str(rv.data))
+        
 
 
     # test post a single record

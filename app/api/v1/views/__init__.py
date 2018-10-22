@@ -15,6 +15,7 @@ api = Api(
     description='A simple store API',
 )
 
+
 api.add_namespace(product_api)
 api.add_namespace(sale_api)
 api.add_namespace(user_api)
