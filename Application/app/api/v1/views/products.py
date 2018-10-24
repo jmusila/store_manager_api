@@ -3,7 +3,6 @@
     Authored by: Jonathan Musila
 """
 from flask_restplus import Resource
-from flask_jwt_extended import jwt_required
 from app.api.v1.models.products import Products, api, product, product_update
 """
 Product List Class
