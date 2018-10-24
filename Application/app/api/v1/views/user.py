@@ -75,7 +75,6 @@ class UserRegister(Resource):
         '''List all sales'''
         return Users, 200
 
-
 @api.route('/login')
 class UserLogin(Resource):
     """
@@ -85,17 +84,15 @@ class UserLogin(Resource):
     @api.expect(user_login, validate=True)
     def post(self):
         data = request.get_json()
-        email = data['email']
-        password = data['password']
-        payload = ['password', 'email']
-        current_user = UserModel.find_by_email(email)
-        if password and email ==True:
-                    
-            access_token = create_access_token(identity = email, expires_delta=datetime.timedelta(hours=5))
-            return {"access_token": access_token}, 200
-
-        else:
-            return {"results": "wrong credentials"}, 401
+        email = data["email"]
+        password = data["password"]
+        for person in Users:
+            if (person["email"] == email) and person["password"] == password:
+                return {"message": "User logged in successfully", "User": person}, 200
+            else:
+                return {"message": "User Already Logged in", "User": person}, 409
+            return {"message": "Enter correct username or password"}, 404
+        return {"message": "User does not exist"}, 404
         
 
 
