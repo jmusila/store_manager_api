@@ -5,12 +5,18 @@ Authored by: Jonathan Musila
 """
 
 from flask_restplus import Resource
-
+from flask_jwt_extended import jwt_required
 
 from app.api.v1.models.sales import Sales, api, sale
 
-
-# class for sale list operations
+"""
+A class for sale record operations
+:Param Attendant: The name of the attendant 
+posting the record
+:Param Amount: An Interger, the amount sold
+:Param Id : Unique Identifier for the product
+:Param Items: The total items sold
+"""
 @api.route('/')
 class SalesList(Resource):
     @api.doc('list_sales')
@@ -18,7 +24,6 @@ class SalesList(Resource):
     def get(self):
         '''List all sales'''
         return Sales, 200
-
 
     @api.expect(sale, validate=True)
     def post(self):
@@ -28,7 +33,14 @@ class SalesList(Resource):
         Sales.append(new_sale)
         return {'results': "Sale added successfully"}, 201
 
-
+"""
+A class to get a singel sale record on the list
+:Param Attendant: The name of the attendant 
+posting the record
+:Param Amount: An Interger, the amount sold
+:Param Id : Unique Identifier for the product
+:Param Items: The total items sold
+"""
 @api.route('/<int:id>')
 @api.param('id', 'The sale identifier')
 @api.response(404, 'Sale not found')
@@ -41,4 +53,3 @@ class Record(Resource):
             if sale['sale_id'] == id:
                 return sale, 200
         api.abort(404)
-
