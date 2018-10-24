@@ -7,12 +7,9 @@ import datetime
 import re
 import json
 from flask import request
-from flask_restplus import Resource, reqparse
-from passlib.hash import pbkdf2_sha256 as sha256
-from validate_email import validate_email
-from flask_jwt_extended import (create_access_token, create_refresh_token, jwt_refresh_token_required, get_jwt_identity, get_raw_jwt)
+from flask_restplus import Resource
 
-from app.api.v1.models.user import Users, api, user, user_login, api, UserModel
+from app.api.v1.models.user import Users, api, user, user_login, api
 
 @api.route('/register')
 class UserRegister(Resource):
