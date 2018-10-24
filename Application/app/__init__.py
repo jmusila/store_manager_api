@@ -1,7 +1,6 @@
 from flask import Flask
 from .api.v1.views import api
 from instance.config import app_config
-from flask_jwt_extended import JWTManager
 
 
 def create_app(config_name):

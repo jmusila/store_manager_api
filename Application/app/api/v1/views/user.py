@@ -75,7 +75,6 @@ class UserRegister(Resource):
         '''List all sales'''
         return Users, 200
 
-
 @api.route('/login')
 class UserLogin(Resource):
     """
