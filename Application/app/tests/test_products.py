@@ -148,6 +148,7 @@ class BaseTest(unittest.TestCase):
         self.assertIn("jonathan@gmail.com was registered succesfully!",res["message"])
 
     def tearDown(self):
+
         """This function destroys all the variables
         that have been created during the test
         """
@@ -158,3 +159,6 @@ class BaseTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+    
+
