@@ -1,6 +1,6 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jonathanmusila/store_manager_api/blob/master/LICENSE)
-[![Build Status](https://travis-ci.com/jonathanmusila/store_manager_api.svg?branch=master)](https://travis-ci.org/jonathanmusila/store_manager_api)
-[![Coverage Status](https://coveralls.io/repos/github/jonathanmusila/store_manager_api/badge.svg?branch=master)](https://coveralls.io/github/jonathanmusila/store_manager_api?branch=master)
+[![Build Status](https://travis-ci.com/jonathanmusila/store_manager_api.svg?branch=chore-updated-readme-161408978)](https://travis-ci.com/jonathanmusila/store_manager_api)
+[![Coverage Status](https://coveralls.io/repos/github/jonathanmusila/store_manager_api/badge.svg?branch=ch-refatoring-code-161464947)](https://coveralls.io/github/jonathanmusila/store_manager_api?branch=ch-refatoring-code-161464947)
 [![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/jonathanmusila/store_manager_api)
 
 ## Store Manager
@@ -49,7 +49,7 @@ cd path/to/directory-your-directory
 - Install postman to test the various endpoints
 
 ## Testing
-Manually open the index.html file in your preferred browser. Navigate through the pages with the links provided.
+Manually open Postman and test all the endpoints.
 
 ## Built With
 * python

@@ -75,12 +75,14 @@ class UserRegister(Resource):
         '''List all sales'''
         return Users, 200
 
+
 @api.route('/login')
 class UserLogin(Resource):
     """
     A method to login a user 
     Params:Password, Email
     """
+
 @api.route('/login')
 class UserLogin(Resource):
     """
@@ -100,5 +102,4 @@ class UserLogin(Resource):
             return {"message": "Enter correct username or password"}, 404
         return {"message": "User does not exist"}, 404
         
-
 
