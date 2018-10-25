@@ -49,7 +49,7 @@ cd path/to/directory-your-directory
 - Install postman to test the various endpoints
 
 ## Testing
-Manually open the index.html file in your preferred browser. Navigate through the pages with the links provided.
+Manually open Postman and test all the endpoints.
 
 ## Built With
 * python
