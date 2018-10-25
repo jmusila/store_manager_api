@@ -82,6 +82,13 @@ class UserLogin(Resource):
     A method to login a user 
     Params:Password, Email
     """
+
+@api.route('/login')
+class UserLogin(Resource):
+    """
+    A method to login a user 
+    Params:Password, Email
+    """
     @api.expect(user_login, validate=True)
     def post(self):
         data = request.get_json()

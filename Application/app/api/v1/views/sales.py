@@ -50,4 +50,6 @@ class Record(Resource):
         for sale in Sales:
             if sale['sale_id'] == id:
                 return sale, 200
+
         api.abort(404)
+
