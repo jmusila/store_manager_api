@@ -1,6 +1,5 @@
 # products models
 from flask_restplus import Namespace, fields, Resource
-from passlib.hash import pbkdf2_sha256 as sha256
 api = Namespace('api/v1/users/', description='Users related operations')
 
 user = api.model('User', {
@@ -20,11 +19,3 @@ user_login = api.model('Login', {
     
 })
 
-class UserModel(Resource):
-    ...
-    @staticmethod
-    def generate_hash(password):
-        return sha256.hash(password)
-    @staticmethod
-    def verify_hash(password, hash):
-        return sha256.verify(password, hash)
